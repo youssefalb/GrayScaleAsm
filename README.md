@@ -9,6 +9,6 @@ Algorithms used:
 
 1. $Grayscale = 0.2126R + 0.7152G + 0.0722B$
 
-2. Grayscale = $Max(R,G,B)+Min(R,G,B)/2$
+2. Grayscale = $(Max(R,G,B)+Min(R,G,B))/2$
 
 3. 
