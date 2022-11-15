@@ -1,0 +1,4 @@
+LIBRARY GrayScaleAsm
+EXPORTS
+getGrayScaleAsm1
+getGrayScaleAsm2

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GrayScaleApp": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
