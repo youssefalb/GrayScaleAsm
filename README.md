@@ -7,8 +7,14 @@ The method to be implemented is called correcting for the human eye. It takes in
 
 Algorithms used:
 
-1. $Grayscale = 0.2126R + 0.7152G + 0.0722B$
+1. Grayscale = 0.2126R + 0.7152G + 0.0722B$
 
-2. $Grayscale = $(Max(R,G,B)+Min(R,G,B))<hr>2$
+2. Grayscale = $Max(R,G,B) + Min(R,G,B) \over 2$
 
-3. 
+3. Grayscale = $Int({AverageValue \over 2}) + CoversionFactor$
+
+      CoversionFactor = $255 \over {NumberOfShades - 1}$
+      
+      AverageValue = ${R+G+B} \over 3$
+
+      NumberOfShades is a value between 2 and 256, chosen by a user
