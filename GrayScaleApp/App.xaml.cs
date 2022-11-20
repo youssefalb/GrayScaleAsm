@@ -13,9 +13,9 @@ public unsafe class AsmProxy
     [DllImport("GrayScaleAsm.dll")]
     private static unsafe extern float getGrayScaleAsm1(Pixel* inBmp, Pixel* outBmp, int size);
 
-    public float getGrayScale1(Pixel* inBmp, Pixel* outBmp, int size)
+    public void getGrayScale1(Pixel* inBmp, Pixel* outBmp, int size)
     {
-        return getGrayScaleAsm1(inBmp, outBmp, size);
+        getGrayScaleAsm1(inBmp, outBmp, size);
     }
 
 }
@@ -29,6 +29,18 @@ public unsafe class AsmProxy_2
     public float getGrayScale2(Pixel* inBmp, Pixel* outBmp, int size)
     {
         return getGrayScaleAsm2(inBmp, outBmp, size);
+    }
+}
+
+public unsafe class AsmProxy_3
+{
+    [DllImport("GrayScaleAsm.dll")]
+    private static unsafe extern float getGrayScaleAsm3(Pixel* inBmp, Pixel* outBmp, int size, int shadesNumber);
+
+
+    public float getGrayScale3(Pixel* inBmp, Pixel* outBmp, int size)
+    {
+        return getGrayScaleAsm3(inBmp, outBmp, size, 200);
     }
 }
 

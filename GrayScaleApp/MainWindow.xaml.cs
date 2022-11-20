@@ -54,8 +54,6 @@ namespace GrayScaleApp
             int height = bitMapCopy.Height;
             Pixel[] inBMP = new Pixel[width*height];
             Pixel[] outBMP = new Pixel[width*height];
-            //Pixel[] test = new Pixel[2];
-            //Pixel[] test_result = new Pixel[2];
             for (int i = 0; i < width * height; i++) inBMP[i] = new Pixel();
             for (int y = 0; y < height; y++)
                 for (int x = 0; x < width; x++)
@@ -69,12 +67,12 @@ namespace GrayScaleApp
             unsafe
             {
 
-                AsmProxy_2 asmP = new AsmProxy_2();
+                AsmProxy_3 asmP = new AsmProxy_3();
                 fixed (Pixel* inBMPAddr = inBMP) {
                     fixed (Pixel* outBMPAddr = outBMP)
                     {
-                        asmP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
-                       // asmP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
+                        //asmP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
+                       asmP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length);
                     }
                 }
 
@@ -88,7 +86,7 @@ namespace GrayScaleApp
                     bitMapCopy.SetPixel(x, y, System.Drawing.Color.FromArgb((int)outBMP[y*width + x].r, (int)outBMP[y * width + x].g , (int)outBMP[y * width + x].b));
 
                 }
-            //PictureBox2.Source = ToBitmapImage(bitMapCopy);
+            PictureBox2.Source = ToBitmapImage(bitMapCopy);
 
         }
 
