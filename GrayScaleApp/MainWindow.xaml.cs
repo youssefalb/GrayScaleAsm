@@ -53,6 +53,9 @@ namespace GrayScaleApp
             int width = bitMapCopy.Width;
             int height = bitMapCopy.Height;
             Pixel[] inBMP = new Pixel[width*height];
+            Pixel[] test = new Pixel[width*height];
+            test[0] = new Pixel(255, 255, 0, 55);
+            test[1] = new Pixel(100, 100, 100, 100);
             Pixel[] outBMP = new Pixel[width*height];
             for (int i = 0; i < width * height; i++) inBMP[i] = new Pixel();
             for (int y = 0; y < height; y++)
@@ -67,12 +70,12 @@ namespace GrayScaleApp
             unsafe
             {
 
-                AsmProxy_3 asmP = new AsmProxy_3();
-                fixed (Pixel* inBMPAddr = inBMP) {
+                AsmProxy_2 asmP = new AsmProxy_2();
+                fixed (Pixel* inBMPAddr = test) {
                     fixed (Pixel* outBMPAddr = outBMP)
                     {
                         //asmP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
-                       asmP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length);
+                       asmP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
                     }
                 }
 
