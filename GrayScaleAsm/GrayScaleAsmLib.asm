@@ -54,8 +54,10 @@ getGrayScaleAsm1 endp
 getGrayScaleAsm2 proc
 	shr R8, 2
 MainLoop:
-	vmovups	ymm0 , ymmword ptr[rcx]; 1 22 55 88
+	vmovups	ymm0 , ymmword ptr[rcx]; 
 	;xmm1 -red, xmm2-green, xmm3-blue
+
+InterMainLoop:
 	vpextrd [tmp], xmm0, 0 ;r pixel 1
 	vpinsrd	xmm1, xmm1, [tmp], 0
 	vpextrd [tmp], xmm0, 1 ;r pixel 1

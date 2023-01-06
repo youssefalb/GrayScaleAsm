@@ -54,7 +54,7 @@ namespace GrayScaleApp
             int height = bitMapCopy.Height;
             Pixel[] inBMP = new Pixel[width*height];
             Pixel[] test = new Pixel[width*height];
-            test[0] = new Pixel(255, 255, 0, 55);
+            test[0] = new Pixel(255, 255.1f, 0, 55);
             test[1] = new Pixel(100, 100, 100, 100);
             Pixel[] outBMP = new Pixel[width*height];
             for (int i = 0; i < width * height; i++) inBMP[i] = new Pixel();
@@ -71,7 +71,7 @@ namespace GrayScaleApp
             {
 
                 AsmProxy_2 asmP = new AsmProxy_2();
-                fixed (Pixel* inBMPAddr = test) {
+                fixed (Pixel* inBMPAddr = inBMP) {
                     fixed (Pixel* outBMPAddr = outBMP)
                     {
                         //asmP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
