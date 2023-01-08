@@ -5,12 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GrayScaleApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="525" Width="809">
     <Grid>
-        <Image x:Name="PictureBox1" HorizontalAlignment="Left" Height="282" Margin="10,10,0,0" VerticalAlignment="Top" Width="375"/>
-        <Image x:Name="PictureBox2" HorizontalAlignment="Left" Height="282" Margin="413,10,0,0" VerticalAlignment="Top" Width="375"/>
-        <Button x:Name="button1" Content="Browse" HorizontalAlignment="Left" Margin="157,320,0,0" VerticalAlignment="Top" Height="44" Width="100" Click="Button_Click"/>
-        <Button x:Name="button2" Content="Grayscale" HorizontalAlignment="Left" Margin="522,320,0,0" VerticalAlignment="Top" Height="44" Width="100" Click="button2_Click"/>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="48*"/>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="67*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="PictureBox1" HorizontalAlignment="Left" Height="282" Margin="16,10,0,0" VerticalAlignment="Top" Width="375" Grid.ColumnSpan="2"/>
+        <Image x:Name="PictureBox2" HorizontalAlignment="Left" Height="282" Margin="227,10,0,0" VerticalAlignment="Top" Width="375" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button x:Name="button1" Content="Browse" HorizontalAlignment="Left" Margin="163,320,0,0" VerticalAlignment="Top" Height="44" Width="100" Click="Button_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="button2" Content="Grayscale" HorizontalAlignment="Left" Margin="336,320,0,0" VerticalAlignment="Top" Height="44" Width="100" Click="button2_Click" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="38,400,0,0" TextWrapping="Wrap" Text="C# Time:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="cTime" HorizontalAlignment="Left" Margin="88,400,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="24,400,0,0" TextWrapping="Wrap" Text="AsmTime:" VerticalAlignment="Top" Width="54" Grid.Column="1"/>
+        <TextBlock x:Name="asmTime" HorizontalAlignment="Left" Margin="84,400,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="1"/>
+        <StackPanel Margin="38,440,0,10" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <RadioButton x:Name="radioButton1" GroupName="group1" Content="Algorithm 1" IsChecked="True"/>
+            <RadioButton x:Name="radioButton2" GroupName="group1" Content="Algorithm 2"  />
+            <RadioButton x:Name="radioButton3" GroupName="group1" Content="Algorithm 3" />
+        </StackPanel>
     </Grid>
 </Window>

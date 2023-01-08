@@ -18,6 +18,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Interop;
 using System.Drawing.Imaging;
+using System.Diagnostics;
 
 namespace GrayScaleApp
 {
@@ -44,8 +45,6 @@ namespace GrayScaleApp
         {
             InitializeComponent();
         }
-
-
         private void button2_Click(object sender, RoutedEventArgs e)
         {
             BitmapImage mybitmapImage = (BitmapImage)(PictureBox1.Source);
@@ -67,21 +66,64 @@ namespace GrayScaleApp
                 
                 }
 
-            unsafe
+            if (radioButton1.IsChecked == true)
             {
+                unsafe
+                {
 
-                AsmProxy_2 asmP = new AsmProxy_2();
-                fixed (Pixel* inBMPAddr = inBMP) {
-                    fixed (Pixel* outBMPAddr = outBMP)
+                    AsmProxy asmP = new AsmProxy();
+                    fixed (Pixel* inBMPAddr = inBMP)
                     {
-                        //asmP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
-                       asmP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
+                        fixed (Pixel* outBMPAddr = outBMP)
+                        {
+                            asmP.getGrayScale1(inBMPAddr, outBMPAddr, inBMP.Length);
+                            Stopwatch stopwatch = Stopwatch.StartNew();
+                            asmP.getGrayScale1(inBMPAddr, outBMPAddr, inBMP.Length);
+                            stopwatch.Stop();
+                            asmTime.Text = stopwatch.ElapsedMilliseconds.ToString() + " milliseconds";
+
+                        }
                     }
                 }
-
-                //ProccesImage(bitMapCopy);
-                //PictureBox2.Source = ToBitmapImage(bitMapCopy);
             }
+            else if (radioButton2.IsChecked == true)
+            {
+                unsafe
+                {
+
+                    AsmProxy_2 asmP = new AsmProxy_2();
+                    fixed (Pixel* inBMPAddr = inBMP)
+                    {
+                        fixed (Pixel* outBMPAddr = outBMP)
+                        {
+                            asmP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
+                            Stopwatch stopwatch = Stopwatch.StartNew();
+                            asmP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
+                            stopwatch.Stop();
+                            asmTime.Text = stopwatch.ElapsedMilliseconds.ToString() + " milliseconds";
+                        }
+                    }
+                }
+            }
+            else if (radioButton3.IsChecked == true)
+            {
+                unsafe
+                {
+
+                    AsmProxy_3 asmP = new AsmProxy_3();
+                    fixed (Pixel* inBMPAddr = inBMP)
+                    {
+                        fixed (Pixel* outBMPAddr = outBMP)
+                        {
+                            asmP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length);
+                            Stopwatch stopwatch = Stopwatch.StartNew();
+                            asmP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length);
+                            stopwatch.Stop();
+                            asmTime.Text = stopwatch.ElapsedMilliseconds.ToString() + " milliseconds";                        }
+                    }
+                }
+            }
+
 
             for (int y = 0; y < height; y++)
                 for (int x = 0; x < width; x++)
