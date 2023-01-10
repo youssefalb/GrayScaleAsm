@@ -22,3 +22,4 @@ C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Debug\net5.0-windows\GrayS
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Debug\net5.0-windows\ref\GrayScaleApp.dll
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Debug\net5.0-windows\GrayScaleApp.pdb
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Debug\net5.0-windows\GrayScaleApp.genruntimeconfig.cache
+C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Debug\net5.0-windows\GrayScaleApp.csproj.AssemblyReference.cache

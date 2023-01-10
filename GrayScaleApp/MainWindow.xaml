@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GrayScaleApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="525" Width="809">
+        Title="MainWindow" Height="798" Width="809">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="48*"/>
             <ColumnDefinition Width="85*"/>
             <ColumnDefinition Width="67*"/>
+
         </Grid.ColumnDefinitions>
         <Image x:Name="PictureBox1" HorizontalAlignment="Left" Height="282" Margin="16,10,0,0" VerticalAlignment="Top" Width="375" Grid.ColumnSpan="2"/>
         <Image x:Name="PictureBox2" HorizontalAlignment="Left" Height="282" Margin="227,10,0,0" VerticalAlignment="Top" Width="375" Grid.Column="1" Grid.ColumnSpan="2"/>
@@ -31,7 +32,13 @@
             </StackPanel.RenderTransform>
             <RadioButton x:Name="radioButton1" GroupName="group1" Content="Algorithm 1" IsChecked="True"/>
             <RadioButton x:Name="radioButton2" GroupName="group1" Content="Algorithm 2"  />
-            <RadioButton x:Name="radioButton3" GroupName="group1" Content="Algorithm 3" />
+            <RadioButton x:Name="radioButton3" GroupName="group1" Content="Algorithm 3"  
+                      Checked="RadioButton_Checked" Unchecked="RadioButton_Unchecked"/>
+        </StackPanel>
+        <StackPanel x:Name="shadesPanel" Margin="194,440,150,241" RenderTransformOrigin="0.525,0.469" Visibility="Collapsed"  Grid.ColumnSpan="2" >
+
+            <TextBlock Text="Shades number: (2-256)"/>
+            <TextBox x:Name="shadesTextBox"/>
         </StackPanel>
     </Grid>
 </Window>

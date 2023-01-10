@@ -1,14 +1,10 @@
 .data
 Consts real4 2 dup(0.2, 0.7, 0.07, 1.0)
-roundings real4 8 dup(0.5)
 dividebytwo real4 4 dup(2.0f) 
 AlphaMask dd 2 dup(0,0,0,0ffffffffh);
 NegAlphaMask dd 2 dup(0ffffffffh,0ffffffffh,0ffffffffh,0); Mask for the alpha channel negated
 tmp dd ?
-tmp2 dd ?
-tmp3 dd ?
 constAlg3 dd 255
-conversionFactor dd ?
 res real4 ?
 three real4 3.0
 counter DB 0

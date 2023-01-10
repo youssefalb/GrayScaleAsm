@@ -19,6 +19,7 @@ using System.IO;
 using System.Windows.Interop;
 using System.Drawing.Imaging;
 using System.Diagnostics;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace GrayScaleApp
 {
@@ -44,6 +45,15 @@ namespace GrayScaleApp
         public MainWindow()
         {
             InitializeComponent();
+        }
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            shadesPanel.Visibility = Visibility.Visible;
+        }
+
+        private void RadioButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            shadesPanel.Visibility = Visibility.Collapsed;
         }
         private void button2_Click(object sender, RoutedEventArgs e)
         {
@@ -107,24 +117,35 @@ namespace GrayScaleApp
             }
             else if (radioButton3.IsChecked == true)
             {
-                unsafe
+                int shades = 0;
+                if (int.TryParse(shadesTextBox.Text.Trim(), out shades))
                 {
-
-                    AsmProxy_3 asmP = new AsmProxy_3();
-                    fixed (Pixel* inBMPAddr = inBMP)
+                    if (shades < 256 && shades > 2)
                     {
-                        fixed (Pixel* outBMPAddr = outBMP)
+                        unsafe
                         {
-                            asmP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length);
-                            Stopwatch stopwatch = Stopwatch.StartNew();
-                            asmP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length);
-                            stopwatch.Stop();
-                            asmTime.Text = stopwatch.ElapsedMilliseconds.ToString() + " milliseconds";                        }
+                            AsmProxy_3 asmP = new AsmProxy_3();
+                            fixed (Pixel* inBMPAddr = inBMP)
+                            {
+                                fixed (Pixel* outBMPAddr = outBMP)
+                                {
+                                    asmP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length, shades);
+                                    Stopwatch stopwatch = Stopwatch.StartNew();
+                                    asmP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length, shades);
+                                    stopwatch.Stop();
+                                    asmTime.Text = stopwatch.ElapsedMilliseconds.ToString() + " milliseconds";
+                                }
+                            }
+                        }
                     }
+                    else MessageBox.Show("Please enter a valid number of shades (2-256)", "Invalid Input", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
                 }
+                else MessageBox.Show("Choose a number please", "Invalid Input", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+
+
             }
 
-
+            // should be moved to a separate function
             for (int y = 0; y < height; y++)
                 for (int x = 0; x < width; x++)
                 {
@@ -142,7 +163,6 @@ namespace GrayScaleApp
             {
                 Uri fileUri = new Uri(openFile.FileName);
                 PictureBox1.Source = new BitmapImage(fileUri);
-
             }
         }
 
@@ -196,7 +216,6 @@ namespace GrayScaleApp
                 return bitmapImage;
             }
         }
-
-
+  
     }
 }

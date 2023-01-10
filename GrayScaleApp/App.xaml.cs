@@ -38,9 +38,9 @@ public unsafe class AsmProxy_3
     private static unsafe extern float getGrayScaleAsm3(Pixel* inBmp, Pixel* outBmp, int size, int shadesNumber);
 
 
-    public float getGrayScale3(Pixel* inBmp, Pixel* outBmp, int size)
+    public float getGrayScale3(Pixel* inBmp, Pixel* outBmp, int size, int shades)
     {
-        return getGrayScaleAsm3(inBmp, outBmp, size, 200);
+        return getGrayScaleAsm3(inBmp, outBmp, size, shades);
     }
 }
 
