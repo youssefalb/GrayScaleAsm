@@ -162,7 +162,15 @@ namespace GrayScaleApp
             if (openFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 Uri fileUri = new Uri(openFile.FileName);
-                PictureBox1.Source = new BitmapImage(fileUri);
+                var fileExt = System.IO.Path.GetExtension(fileUri.LocalPath);
+                if (fileExt == ".jpg" || fileExt == ".png")
+                {
+                    PictureBox1.Source = new BitmapImage(fileUri);
+                }
+                else
+                {
+                    MessageBox.Show("Upload only .jpg or .png files", "Invalid Image", (MessageBoxButtons)MessageBoxButton.OK, (MessageBoxIcon)MessageBoxImage.Error);
+                }
             }
         }
 
