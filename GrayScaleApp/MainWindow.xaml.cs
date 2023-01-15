@@ -82,15 +82,32 @@ namespace GrayScaleApp
                 {
 
                     AsmProxy asmP = new AsmProxy();
+                    CppProxy cppP = new CppProxy();
                     fixed (Pixel* inBMPAddr = inBMP)
                     {
                         fixed (Pixel* outBMPAddr = outBMP)
                         {
+                            cppP.getGrayScale1(inBMPAddr, outBMPAddr, inBMP.Length);
                             asmP.getGrayScale1(inBMPAddr, outBMPAddr, inBMP.Length);
-                            Stopwatch stopwatch = Stopwatch.StartNew();
-                            asmP.getGrayScale1(inBMPAddr, outBMPAddr, inBMP.Length);
-                            stopwatch.Stop();
-                            asmTime.Text = stopwatch.ElapsedMilliseconds.ToString() + " milliseconds";
+                            long totalTimeCpp = 0;
+                            long totalTimeAsm = 0;
+                            for (int i = 0; i < 100; i++)
+                            {
+                                Stopwatch stopwatch = Stopwatch.StartNew();
+                                asmP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
+                                stopwatch.Stop();
+                                totalTimeAsm += stopwatch.ElapsedMilliseconds;
+
+                                Stopwatch stopwatch_2 = Stopwatch.StartNew();
+                                cppP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
+                                stopwatch.Stop();
+                                totalTimeCpp += stopwatch_2.ElapsedMilliseconds;
+                            }
+                            totalTimeCpp = totalTimeCpp / 100;
+                            totalTimeAsm = totalTimeAsm / 100;
+                            asmTime.Text = totalTimeAsm + " milliseconds";
+                            cppTime.Text = totalTimeCpp + " milliseconds";
+
 
                         }
                     }
@@ -101,16 +118,35 @@ namespace GrayScaleApp
                 unsafe
                 {
 
-                    AsmProxy_2 asmP = new AsmProxy_2();
+                    AsmProxy asmP = new AsmProxy();
+                    CppProxy cppP = new CppProxy();
                     fixed (Pixel* inBMPAddr = inBMP)
                     {
                         fixed (Pixel* outBMPAddr = outBMP)
                         {
+                            cppP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
                             asmP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
-                            Stopwatch stopwatch = Stopwatch.StartNew();
-                            asmP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
-                            stopwatch.Stop();
-                            asmTime.Text = stopwatch.ElapsedMilliseconds.ToString() + " milliseconds";
+                            long totalTimeCpp = 0;
+                            long totalTimeAsm = 0;
+
+
+                            for (int i = 0; i < 100; i++)
+                            {
+                                Stopwatch stopwatch = Stopwatch.StartNew();
+                                asmP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
+                                stopwatch.Stop();
+                                totalTimeAsm += stopwatch.ElapsedMilliseconds;
+
+                                Stopwatch stopwatch_2 = Stopwatch.StartNew();
+                                cppP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
+                                stopwatch.Stop();
+                                totalTimeCpp += stopwatch_2.ElapsedMilliseconds;
+                            }
+                            totalTimeCpp = totalTimeCpp /100;
+                            totalTimeAsm = totalTimeAsm /100;
+                            asmTime.Text = totalTimeAsm + " milliseconds";
+                            cppTime.Text = totalTimeCpp + " milliseconds";
+
                         }
                     }
                 }
@@ -124,16 +160,32 @@ namespace GrayScaleApp
                     {
                         unsafe
                         {
-                            AsmProxy_3 asmP = new AsmProxy_3();
+                            AsmProxy asmP = new AsmProxy();
+                            CppProxy cppP = new CppProxy();
                             fixed (Pixel* inBMPAddr = inBMP)
                             {
                                 fixed (Pixel* outBMPAddr = outBMP)
                                 {
+                                    cppP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length , shades);
                                     asmP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length, shades);
-                                    Stopwatch stopwatch = Stopwatch.StartNew();
-                                    asmP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length, shades);
-                                    stopwatch.Stop();
-                                    asmTime.Text = stopwatch.ElapsedMilliseconds.ToString() + " milliseconds";
+                                    long totalTimeCpp = 0;
+                                    long totalTimeAsm = 0;
+                                    for (int i = 0; i < 100; i++)
+                                    {
+                                        Stopwatch stopwatch = Stopwatch.StartNew();
+                                        asmP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length , shades);
+                                        stopwatch.Stop();
+                                        totalTimeAsm += stopwatch.ElapsedMilliseconds;
+
+                                        Stopwatch stopwatch_2 = Stopwatch.StartNew();
+                                        cppP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length, shades);
+                                        stopwatch.Stop();
+                                        totalTimeCpp += stopwatch_2.ElapsedMilliseconds;
+                                    }
+                                    totalTimeCpp = totalTimeCpp / 100;
+                                    totalTimeAsm = totalTimeAsm / 100;
+                                    asmTime.Text = totalTimeAsm + " milliseconds";
+                                    cppTime.Text = totalTimeCpp + " milliseconds";
                                 }
                             }
                         }

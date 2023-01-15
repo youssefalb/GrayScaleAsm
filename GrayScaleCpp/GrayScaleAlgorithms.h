@@ -1,5 +1,6 @@
 #pragma once
 
+
 struct Pixel
 {
     float r;
@@ -9,5 +10,7 @@ struct Pixel
 };
 
 extern "C" __declspec(dllexport) void getGrayScaleCpp1(Pixel * inBmp, Pixel * outBmp, int size);
+extern "C" __declspec(dllexport) void getGrayScaleCpp2(Pixel * inBmp, Pixel * outBmp, int size);
+extern "C" __declspec(dllexport) void getGrayScaleCpp3(Pixel * inBmp, Pixel * outBmp, int size, int shades);
 
 

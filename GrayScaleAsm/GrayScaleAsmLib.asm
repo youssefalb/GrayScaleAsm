@@ -56,9 +56,9 @@ MainLoop:
 InterMainLoop:
 	vpextrd [tmp], xmm0, 0 ;r pixel 1
 	vpinsrd	xmm1, xmm1, [tmp], 0
-	vpextrd [tmp], xmm0, 1 ;r pixel 1
+	vpextrd [tmp], xmm0, 1 ;g pixel 1
 	vpinsrd	xmm2, xmm2, [tmp], 0
-	vpextrd [tmp], xmm0, 2 ;r pixel 1
+	vpextrd [tmp], xmm0, 2 ;b pixel 1
 	vpinsrd	xmm3, xmm3, [tmp], 0
 
 	VEXTRACTF128 xmm0, ymm0, 1
@@ -114,7 +114,7 @@ InterMainLoop:
 
 	vpextrd [tmp], xmm4, 2;r pixel 1
 	VBROADCASTSS xmm0, [tmp]
-	vpextrd [tmp], xmm4, 3 ;r pixel 1
+	vpextrd [tmp], xmm4, 3 
 	VBROADCASTSS xmm1, [tmp]
 
 	vinsertf128 ymm0, ymm0, xmm1, 1
