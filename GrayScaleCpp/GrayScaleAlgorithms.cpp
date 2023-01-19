@@ -46,7 +46,7 @@ void getGrayScaleCpp3(Pixel* inBMPAddr, Pixel* outBMPAddr, int length, int shade
     const float conversionFactor = 255 / (shades - 1);
     for (int i = 0; i <= length; i++) {
         float averageValue = (inBMPAddr[i].r + inBMPAddr[i].g + inBMPAddr[i].b) / 3;
-        float grayscale = (int)(averageValue / 2) + conversionFactor;
+        float grayscale = (int)((averageValue / conversionFactor)+ 0.5) * conversionFactor;
         outBMPAddr[i].r = grayscale;
         outBMPAddr[i].g = grayscale;
         outBMPAddr[i].b = grayscale;

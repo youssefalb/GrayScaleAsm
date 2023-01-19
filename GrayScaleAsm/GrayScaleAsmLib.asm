@@ -22,20 +22,22 @@ testvar dd 0.1
  ;size R8
 
 getGrayScaleAsm1 proc
-	shr R8, 1
+	shr R8, 1; Dividing the size by two
 MainLoop:
-	vmovups	ymm0 , ymmword ptr[rcx]
-	vandps	ymm1 ,ymm0 ,[AlphaMask]
-	vmulps ymm0, ymm0, [Consts]
-	vandps	ymm0 , ymm0, [NegAlphaMask] 
+	vmovups	ymm0 , ymmword ptr[rcx]; Moving the pixels values from input array to ymm0 register
+	vandps	ymm1 ,ymm0 ,[AlphaMask]; Saving the value of AlphaChannel to ymm1 register
+	vmulps ymm0, ymm0, [Consts]; Multiplying the RGB values of pixels by constants
+
+	vandps	ymm0 , ymm0, [NegAlphaMask] ;Making AlphaChannel to be 0
+
 
 	VHADDPS ymm0 , ymm0 , ymm0
-	VHADDPS ymm0 , ymm0 , ymm0
-	vorps	ymm0 ,ymm1 , ymm0
+	VHADDPS ymm0 , ymm0 ,ymm0; Adding two times horizontally the values so that the sum of RGB coefficients is obtained
+	vorps	ymm0 ,ymm1 , ymm0; restoring the AlphaChannel
 	vmovups	ymmword ptr[rdx], ymm0
 
-	add rcx , 32
-	add rdx , 32
+	add rcx , 32; moving by two pixels
+	add rdx , 32; moving by two pixels
 	dec R8
 	jnz  MainLoop
 	;to check if the r8 is 0 after its divided 2 jnz
@@ -48,36 +50,42 @@ getGrayScaleAsm1 endp
  ;size R8
 
 getGrayScaleAsm2 proc
-	shr R8, 2
+	shr R8, 2; Dividing the size by two
 MainLoop:
-	vmovups	ymm0 , ymmword ptr[rcx]; 
+	vmovups	ymm0 , ymmword ptr[rcx]
+	;Moving the pixels values from input image to ymm0 register
 	;xmm1 -red, xmm2-green, xmm3-blue
 
 InterMainLoop:
-	vpextrd [tmp], xmm0, 0 ;r pixel 1
+	vpextrd [tmp], xmm0, 0
 	vpinsrd	xmm1, xmm1, [tmp], 0
-	vpextrd [tmp], xmm0, 1 ;g pixel 1
+	;Extracting red value of first pixel 
+	;into tmp and inserts it onto the first place of xmm1 register 
+	vpextrd [tmp], xmm0, 1
 	vpinsrd	xmm2, xmm2, [tmp], 0
+	;Extracting green value of first pixel 
+	;into tmp and inserts it onto the first place of xmm1 register 
 	vpextrd [tmp], xmm0, 2 ;b pixel 1
 	vpinsrd	xmm3, xmm3, [tmp], 0
-
+		;Extracting green value of first pixel 
+	;into tmp and inserts it onto the first place of xmm1 register 
 	VEXTRACTF128 xmm0, ymm0, 1
-
-	vpextrd [tmp], xmm0, 0 ;r pixel 1
+	;Going to the next pixel
+	vpextrd [tmp], xmm0, 0 
 	vpinsrd	xmm1, xmm1, [tmp], 1
-	vpextrd [tmp], xmm0, 1 ;r pixel 1
+	vpextrd [tmp], xmm0, 1 
 	vpinsrd	xmm2, xmm2, [tmp], 1
-	vpextrd [tmp], xmm0, 2 ;r pixel 1
+	vpextrd [tmp], xmm0, 2 
 	vpinsrd	xmm3, xmm3, [tmp], 1
 
-	add rcx, 32
+	add rcx, 32 ; moving two pixels
 
-	vmovups	ymm0 , ymmword ptr[rcx]; 1 22 55 88
-	vpextrd [tmp], xmm0, 0 ;r pixel 1
+	vmovups	ymm0 , ymmword ptr[rcx]
+	vpextrd [tmp], xmm0, 0 
 	vpinsrd	xmm1, xmm1, [tmp], 2
-	vpextrd [tmp], xmm0, 1 ;r pixel 1
+	vpextrd [tmp], xmm0, 1 
 	vpinsrd	xmm2, xmm2, [tmp], 2
-	vpextrd [tmp], xmm0, 2 ;r pixel 1
+	vpextrd [tmp], xmm0, 2 
 	vpinsrd	xmm3, xmm3, [tmp], 2
 
 	VEXTRACTF128 xmm0, ymm0, 1
@@ -102,9 +110,9 @@ InterMainLoop:
 	vaddps xmm4, xmm4, xmm5
 	divps xmm4, [dividebytwo]
 
-	vpextrd [tmp], xmm4, 0;r pixel 1
+	vpextrd [tmp], xmm4, 0
 	VBROADCASTSS xmm0, [tmp]
-	vpextrd [tmp], xmm4, 1 ;r pixel 1
+	vpextrd [tmp], xmm4, 1
 	VBROADCASTSS xmm1, [tmp]
 
 	vinsertf128 ymm0, ymm0, xmm1, 1

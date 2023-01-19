@@ -1,3 +1,5 @@
-﻿  Assembling GrayScaleAsmLib.asm...
-LINK : error LNK2001: unresolved external symbol mainCRTStartup
-C:\Users\youssef albali\Source\Repos\GrayScaleApp\x64\Release\GrayScaleAsm.exe : fatal error LNK1120: 1 unresolved externals
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  Assembling GrayScaleAsmLib.asm...
+     Creating library C:\Users\youssef albali\Source\Repos\GrayScaleApp\x64\Release\net5.0-windows\GrayScaleAsm.lib and object C:\Users\youssef albali\Source\Repos\GrayScaleApp\x64\Release\net5.0-windows\GrayScaleAsm.exp
+  LINK : /LTCG specified but no code generation required; remove /LTCG from the link command line to improve linker performance
+  GrayScaleAsm.vcxproj -> C:\Users\youssef albali\Source\Repos\GrayScaleApp\x64\Release\net5.0-windows\GrayScaleAsm.dll

@@ -1,0 +1,12 @@
+﻿  pch.cpp
+  dllmain.cpp
+  GrayScaleAlgorithms.cpp
+C:\Users\youssef albali\Source\Repos\GrayScaleCpp\GrayScaleAlgorithms.cpp(6,56): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\youssef albali\Source\Repos\GrayScaleCpp\GrayScaleAlgorithms.cpp(46,40): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\youssef albali\Source\Repos\GrayScaleCpp\GrayScaleAlgorithms.cpp(46,34): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
+     Creating library C:\Users\youssef albali\Source\Repos\GrayScaleApp\Release\GrayScaleCpp.lib and object C:\Users\youssef albali\Source\Repos\GrayScaleApp\Release\GrayScaleCpp.exp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 6 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  GrayScaleCpp.vcxproj -> C:\Users\youssef albali\Source\Repos\GrayScaleApp\Release\GrayScaleCpp.dll

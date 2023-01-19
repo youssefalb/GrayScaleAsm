@@ -40,6 +40,11 @@
           "targetAlias": "net5.0-windows",
           "projectReferences": {}
         }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
       }
     },
     "frameworks": {

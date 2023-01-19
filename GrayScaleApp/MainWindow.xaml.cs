@@ -65,7 +65,8 @@ namespace GrayScaleApp
             Pixel[] test = new Pixel[width*height];
             test[0] = new Pixel(255, 255.1f, 0, 55);
             test[1] = new Pixel(100, 100, 100, 100);
-            Pixel[] outBMP = new Pixel[width*height];
+            Pixel[] outBMPAsm = new Pixel[width*height];
+            Pixel[] outBMPCpp = new Pixel[width*height];
             for (int i = 0; i < width * height; i++) inBMP[i] = new Pixel();
             for (int y = 0; y < height; y++)
                 for (int x = 0; x < width; x++)
@@ -85,9 +86,9 @@ namespace GrayScaleApp
                     CppProxy cppP = new CppProxy();
                     fixed (Pixel* inBMPAddr = inBMP)
                     {
-                        fixed (Pixel* outBMPAddr = outBMP)
+                        fixed (Pixel* outBMPAddr = outBMPAsm, outBMPAddr2 =outBMPCpp)
                         {
-                            cppP.getGrayScale1(inBMPAddr, outBMPAddr, inBMP.Length);
+                            cppP.getGrayScale1(inBMPAddr, outBMPAddr2, inBMP.Length);
                             asmP.getGrayScale1(inBMPAddr, outBMPAddr, inBMP.Length);
                             long totalTimeCpp = 0;
                             long totalTimeAsm = 0;
@@ -99,7 +100,7 @@ namespace GrayScaleApp
                                 totalTimeAsm += stopwatch.ElapsedMilliseconds;
 
                                 Stopwatch stopwatch_2 = Stopwatch.StartNew();
-                                cppP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
+                                cppP.getGrayScale2(inBMPAddr, outBMPAddr2, inBMP.Length);
                                 stopwatch.Stop();
                                 totalTimeCpp += stopwatch_2.ElapsedMilliseconds;
                             }
@@ -122,9 +123,9 @@ namespace GrayScaleApp
                     CppProxy cppP = new CppProxy();
                     fixed (Pixel* inBMPAddr = inBMP)
                     {
-                        fixed (Pixel* outBMPAddr = outBMP)
+                        fixed (Pixel* outBMPAddr = outBMPAsm, outBMPAddr2 = outBMPCpp)
                         {
-                            cppP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
+                            cppP.getGrayScale2(inBMPAddr, outBMPAddr2, inBMP.Length);
                             asmP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
                             long totalTimeCpp = 0;
                             long totalTimeAsm = 0;
@@ -138,7 +139,7 @@ namespace GrayScaleApp
                                 totalTimeAsm += stopwatch.ElapsedMilliseconds;
 
                                 Stopwatch stopwatch_2 = Stopwatch.StartNew();
-                                cppP.getGrayScale2(inBMPAddr, outBMPAddr, inBMP.Length);
+                                cppP.getGrayScale2(inBMPAddr, outBMPAddr2, inBMP.Length);
                                 stopwatch.Stop();
                                 totalTimeCpp += stopwatch_2.ElapsedMilliseconds;
                             }
@@ -164,9 +165,9 @@ namespace GrayScaleApp
                             CppProxy cppP = new CppProxy();
                             fixed (Pixel* inBMPAddr = inBMP)
                             {
-                                fixed (Pixel* outBMPAddr = outBMP)
+                                fixed (Pixel* outBMPAddr = outBMPAsm, outBMPAddr2 = outBMPCpp)
                                 {
-                                    cppP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length , shades);
+                                    cppP.getGrayScale3(inBMPAddr, outBMPAddr2, inBMP.Length , shades);
                                     asmP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length, shades);
                                     long totalTimeCpp = 0;
                                     long totalTimeAsm = 0;
@@ -178,7 +179,7 @@ namespace GrayScaleApp
                                         totalTimeAsm += stopwatch.ElapsedMilliseconds;
 
                                         Stopwatch stopwatch_2 = Stopwatch.StartNew();
-                                        cppP.getGrayScale3(inBMPAddr, outBMPAddr, inBMP.Length, shades);
+                                        cppP.getGrayScale3(inBMPAddr, outBMPAddr2, inBMP.Length, shades);
                                         stopwatch.Stop();
                                         totalTimeCpp += stopwatch_2.ElapsedMilliseconds;
                                     }
@@ -197,14 +198,21 @@ namespace GrayScaleApp
 
             }
 
-            // should be moved to a separate function
             for (int y = 0; y < height; y++)
                 for (int x = 0; x < width; x++)
                 {
-                    bitMapCopy.SetPixel(x, y, System.Drawing.Color.FromArgb((int)outBMP[y*width + x].r, (int)outBMP[y * width + x].g , (int)outBMP[y * width + x].b));
+                    bitMapCopy.SetPixel(x, y, System.Drawing.Color.FromArgb((int)outBMPAsm[y*width + x].r, (int)outBMPAsm[y * width + x].g , (int)outBMPAsm[y * width + x].b));
 
                 }
             PictureBox2.Source = ToBitmapImage(bitMapCopy);
+
+            for (int y = 0; y < height; y++)
+                for (int x = 0; x < width; x++)
+                {
+                    bitMapCopy.SetPixel(x, y, System.Drawing.Color.FromArgb((int)outBMPCpp[y * width + x].r, (int)outBMPCpp[y * width + x].g, (int)outBMPCpp[y * width + x].b));
+
+                }
+            PictureBox3.Source = ToBitmapImage(bitMapCopy);
 
         }
 

@@ -1,6 +1,10 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  pch.cpp
+  dllmain.cpp
   GrayScaleAlgorithms.cpp
 C:\Users\youssef albali\Source\Repos\GrayScaleCpp\GrayScaleAlgorithms.cpp(6,56): warning C4305: 'initializing': truncation from 'double' to 'const float'
 C:\Users\youssef albali\Source\Repos\GrayScaleCpp\GrayScaleAlgorithms.cpp(46,40): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 C:\Users\youssef albali\Source\Repos\GrayScaleCpp\GrayScaleAlgorithms.cpp(46,34): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
+  Generating Code...
+     Creating library C:\Users\youssef albali\Source\Repos\GrayScaleApp\x64\Debug\net5.0-windows\GrayScaleCpp.lib and object C:\Users\youssef albali\Source\Repos\GrayScaleApp\x64\Debug\net5.0-windows\GrayScaleCpp.exp
   GrayScaleCpp.vcxproj -> C:\Users\youssef albali\Source\Repos\GrayScaleApp\x64\Debug\net5.0-windows\GrayScaleCpp.dll

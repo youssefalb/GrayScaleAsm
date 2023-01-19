@@ -6,7 +6,6 @@ C:\Users\youssef albali\Source\Repos\GrayScaleApp\bin\Release\net5.0-windows\Gra
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\bin\Release\net5.0-windows\ref\GrayScaleApp.dll
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\bin\Release\net5.0-windows\GrayScaleApp.pdb
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\bin\Release\net5.0-windows\System.Windows.Forms.VisualStudio.15.0.dll
-C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Release\net5.0-windows\GrayScaleApp.csproj.AssemblyReference.cache
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Release\net5.0-windows\GrayScaleApp.csproj.ResolveComReference.cache
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Release\net5.0-windows\MainWindow.g.cs
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Release\net5.0-windows\App.g.cs
@@ -18,8 +17,17 @@ C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Release\net5.0-windows\Gra
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Release\net5.0-windows\GrayScaleApp.AssemblyInfoInputs.cache
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Release\net5.0-windows\GrayScaleApp.AssemblyInfo.cs
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Release\net5.0-windows\GrayScaleApp.csproj.CoreCompileInputs.cache
-C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Release\net5.0-windows\GrayScaleApp.csproj.CopyComplete
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Release\net5.0-windows\GrayScaleApp.dll
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Release\net5.0-windows\ref\GrayScaleApp.dll
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Release\net5.0-windows\GrayScaleApp.pdb
+C:\Users\youssef albali\Source\Repos\GrayScaleApp\x64\Release\net5.0-windows\GrayScaleApp.exe
+C:\Users\youssef albali\Source\Repos\GrayScaleApp\x64\Release\net5.0-windows\GrayScaleApp.deps.json
+C:\Users\youssef albali\Source\Repos\GrayScaleApp\x64\Release\net5.0-windows\GrayScaleApp.runtimeconfig.json
+C:\Users\youssef albali\Source\Repos\GrayScaleApp\x64\Release\net5.0-windows\GrayScaleApp.runtimeconfig.dev.json
+C:\Users\youssef albali\Source\Repos\GrayScaleApp\x64\Release\net5.0-windows\GrayScaleApp.dll
+C:\Users\youssef albali\Source\Repos\GrayScaleApp\x64\Release\net5.0-windows\ref\GrayScaleApp.dll
+C:\Users\youssef albali\Source\Repos\GrayScaleApp\x64\Release\net5.0-windows\GrayScaleApp.pdb
+C:\Users\youssef albali\Source\Repos\GrayScaleApp\x64\Release\net5.0-windows\System.Windows.Forms.VisualStudio.15.0.dll
+C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Release\net5.0-windows\GrayScaleApp.csproj.CopyComplete
 C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Release\net5.0-windows\GrayScaleApp.genruntimeconfig.cache
+C:\Users\youssef albali\Source\Repos\GrayScaleApp\obj\Release\net5.0-windows\GrayScaleApp.csproj.AssemblyReference.cache
